@@ -15,8 +15,7 @@
   margin: 0;
 }
 
-.image-upload-container:hover,
-.background-colour-container:hover {
+.image-upload-container:hover {
   cursor: pointer;
   background-color: #f1f1f1;
 }
@@ -25,12 +24,7 @@
   border-radius: 0 0 0 5px;  
 }
 
-.background-colour-container:hover {
-  border-radius: 0 0 5px 0;  
-}
-
-.image-upload-container:active,
-.background-colour-container:active {
+.image-upload-container:active {
   background-color: #e1e1e1; 
 }
 
@@ -44,7 +38,7 @@
   color: #596B87;
   box-sizing: border-box;
   text-align: center;
-  top: -11px;
+  top: -8px;
 }
 
 .background-colour {

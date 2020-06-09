@@ -12,8 +12,8 @@
 
 .modal-container {
   margin: 10% auto;
-  padding: 2%;
-  border-radius: 5px;
+  padding: 1%;
+  border-radius: 10px;
   background-color: #FFF;
   height: 75vh;
   width: 50vw;
@@ -26,7 +26,7 @@
   height: auto;
 }
 
-.close-modal-button {
+.primary-modal-button {
   padding: 10px 40px;
   color: white;
   border-radius: 5px;
@@ -35,21 +35,23 @@
   width: auto;
   height: auto;
   float: right;
+  margin: 0 5px;
 }
 
 .secondary-modal-button {
   padding: 10px 40px;
   color: #65768E;
   background-color: white;
-  border: 2px solid #65768E;
+  border: 1px solid #65768E;
   border-radius: 5px;
   display: inline-block;
   width: auto;
   height: auto;
   float: right;
+  margin: 0 5px;
 }
 
-.close-modal-button:hover {
+.primary-modal-button:hover {
   cursor: pointer;
   background-color: #909DAD;
 }
@@ -57,5 +59,6 @@
 .secondary-modal-button:hover {
   cursor: pointer;
   color: white;
-  background-color: #65768E;
+  background-color: #909DAD;
+  border: 1px solid #909DAD;
 }

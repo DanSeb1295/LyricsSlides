@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 
 class CloseModalButton extends Component {
   render() {
-    const { text, onClick } = this.props;
+    const { text, onClick, className } = this.props;
 
     return (
-      <div className="close-modal-button" onClick={onClick}>
+      <div className={className} onClick={onClick}>
         { text } 
       </div>
     )

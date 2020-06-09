@@ -1,0 +1,42 @@
+.file-upload-component .modal-container {
+  height: 70vh;
+  width: 50vw;
+  text-align: center;
+}
+
+.dotted-outline {
+  border: 3px dashed #7E8DA0;
+  border-radius: 8px;
+  height: 100%;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 2%;
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: flex-start;
+}
+
+.img-icon-container {
+  margin-top: 0;
+  height: 60%;
+}
+
+.img-icon-container img {
+  height: 100%;
+}
+
+.browse-file-container {
+  margin: 50px 0 0;
+  justify-content: center;
+}
+
+.browse-file-container .browse-file-upload#browse-file-upload {
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+}
+
+

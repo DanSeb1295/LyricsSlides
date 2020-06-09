@@ -12,7 +12,7 @@ class EntryModal extends Component {
           <div className="modal-content-container">
             Entry Modal
           </div>
-          <CloseModalButton text={'I accept'} onClick={onClick} />
+          <CloseModalButton className="primary-modal-button" text={'I accept'} onClick={onClick} />
         </div>
       </div>
     )

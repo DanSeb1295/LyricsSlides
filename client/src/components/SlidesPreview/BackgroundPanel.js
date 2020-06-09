@@ -4,9 +4,11 @@ import image from '../../assets/image.png';
 
 class BackgroundPanel extends Component {
   render () {
+    const { toggleModal } = this.props;
+    
     return (
       <Fragment>
-        <div className="image-upload-container row">
+        <div className="image-upload-container row" onClick={toggleModal}>
           <div className="image-column column">
             <div className="image-container">
               <img src={image} alt="Upload Icon"/>
