@@ -7,7 +7,6 @@ import { ImageUploadModal } from '../modals';
 class SlidesPreview extends Component {
   render () {
     const { openModal, fileHandler, toggleModal, textAlignment, bold, italics, underline, backgroundImage } = this.props
-    console.log(backgroundImage)
 
     const previewStyle = {
       textAlign: textAlignment,
