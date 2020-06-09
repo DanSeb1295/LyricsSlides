@@ -9,7 +9,7 @@ class BackgroundPanel extends Component {
         <div className="image-upload-container row">
           <div className="image-column column">
             <div className="image-container">
-              <img src={image} alt="Image Upload"/>
+              <img src={image} alt="Upload Icon"/>
             </div>
             Set Background Image
           </div>

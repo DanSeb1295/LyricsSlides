@@ -18,7 +18,7 @@
 .column {
   display: flex;
   flex-flow: column wrap;
-  justify-content: start;
+  justify-content: flex-start;
 }
 
 .app-header-container {
