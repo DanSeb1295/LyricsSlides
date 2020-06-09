@@ -1,0 +1,5 @@
+.slides-config-container {
+  width: 60vw;
+  padding: 30px max(3vw, 3vh); 
+  font-size: max(2.5vw, 2.5vh);
+}

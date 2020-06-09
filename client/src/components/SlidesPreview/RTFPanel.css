@@ -1,0 +1,42 @@
+img {
+  height: 15px;
+  margin: 5px 15px;
+}
+
+.text-colour {
+  display: flex;
+  flex-flow: column wrap;
+  min-width: 50px;
+  text-align: center;
+}
+
+.font-selector, .size-selector{
+  border: 1px solid rgba(50, 50, 50, .2);
+  border-radius: 2px;
+  height: 20px;
+  margin: auto 1px;
+  font-size: 12px;
+  line-height: 20px;
+  padding: 0 5px;
+}
+
+.font-selector {
+  width: 80px;
+  min-width: 50px;
+}
+
+.size-selector {
+  width: 30px;
+}
+
+.colour-bar {
+  font-size: 0;
+  height: 3px;
+  width: 13px;
+  position: relative;
+  top: -5px;
+  left: calc((100% - 15px) / 2);
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 1px;
+}
