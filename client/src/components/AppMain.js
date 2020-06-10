@@ -3,6 +3,9 @@ import './AppMain.css';
 import SlidesPreview from './SlidesPreview';
 import SlidesConfig from './SlidesConfig';
 import Footer from './Footer';
+import { SongSchema } from '../config/config';
+
+let songID = 0;
 
 class AppMain extends Component {
   state = {
@@ -17,9 +20,9 @@ class AppMain extends Component {
     textAlignment: 'center',
     backgroundImage: null,
     backgroundColor: '#000',
-    textContent: [],
     imageUploadModal: false,
-    infoModal: false
+    infoModal: false,
+    songList: [ {...SongSchema, key: songID, id: ++songID} ]
   }
 
   handleTextChange = event => {
@@ -78,6 +81,40 @@ class AppMain extends Component {
     }})
   }
 
+  addNewSong = () => {
+    this.setState(prevState => {
+      let newSong = { ...SongSchema, key: songID, id: ++songID };
+      return {
+        songList: [...prevState.songList, newSong]
+      };
+    });
+  }
+
+  updateSong = song => {
+    this.setState((state, props) => {
+      const songList = state.songList;
+      for (let i = 0; i < songList.length; i++) {
+        if (songList[i].id === song.id) {
+          songList[i] = song;
+          return { songList: songList };
+        }
+      }
+    });
+  }
+
+  deleteSong = id => {
+    this.setState(prevState => {
+      let songList = prevState.songList;
+      songList = songList.filter(songItem => songItem.id !== id)
+      
+      if (songList.length === 0) {
+        songList.push({...SongSchema, key: songID, id: ++songID})
+      }
+      
+      return { songList }
+    })
+  }
+
   render () {
     const {
       imageUploadModal,
@@ -92,7 +129,8 @@ class AppMain extends Component {
       fontColor,
       textAlignment,
       backgroundImage,
-      backgroundColor
+      backgroundColor,
+      songList
     } = this.state;
 
     const SlidesPreviewProps = {
@@ -120,7 +158,11 @@ class AppMain extends Component {
     }
 
     const SlidesConfigProps = {
-      openModal: infoModal
+      songList,
+      openModal: infoModal,
+      addNewSong: this.addNewSong,
+      updateSong: this.updateSong,
+      deleteSong: this.deleteSong
     }
 
     return (

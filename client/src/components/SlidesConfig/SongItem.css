@@ -1,0 +1,128 @@
+.song-container {
+  padding: 10px;
+  width: calc(100% - 20px);
+  font-size: 12px;
+  border: 1px solid #65768E;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.song-configs {
+  padding: 5px 5px 10px;
+  box-sizing: border-box;
+  padding-bottom: 0;
+}
+
+.mode-select,
+.status-panel {
+  width: 50%;
+  padding: 0;
+  box-sizing: border-box;
+  display: flex;
+  flex-flow: row;
+}
+
+.mode-select {
+  justify-content: flex-start;
+}
+
+.status-panel {
+  justify-content: flex-end;
+}
+
+.artist-column,
+.song-title-column {
+  width: 48%;
+  min-width: 200px;
+  margin: 2% 1% 0;
+  overflow-x: auto;
+}
+
+.song-container input,
+.song-container textarea {
+  font-family: 'Helvetica Neue', sans-serif;
+  padding: 7px;
+  border: 1px solid #65768E;
+  border-radius: 3px;
+  margin-bottom: 5px;
+}
+
+.song-container textarea {
+  margin-top: 10px;
+  max-width: 98%;
+  min-width: 98%;
+  min-height: 35px;
+  box-sizing: border-box;
+}
+
+.song-container input {
+  width: calc(100% - 16px);
+}
+
+.artist-subtitle,
+.song-title-subtitle {
+  padding-left: 7px;
+  font-family: 'Helvetica Neue';
+  color: #65768E;
+}
+
+.custom-text-input {
+  width: 96%;
+  align-self: center;
+  height: 47px;
+}
+
+.search-button,
+.custom-button,
+.done-button {
+  padding: 5px 10px;
+  color: #65768E;
+  background-color: white;
+  border: 1px solid #65768E;
+  border-radius: 0 50px 50px 0;
+  display: inline-block;
+  width: auto;
+  height: 25px;
+  cursor: pointer;
+  box-sizing: border-box;
+}
+
+.done-button {
+  border-radius: 5px;
+  color: white;
+  background-color: #65768E;
+}
+
+.search-button {
+  border-radius: 50px 0 0 50px;
+}
+
+.search-button:hover,
+.custom-button:hover,
+.done-button:hover {
+  background-color: #909DAD;
+  border: 1px solid #909DAD;
+  color: white;
+}
+
+.secondary-modal-button:hover {
+  color: white;
+  background-color: #909DAD;
+  border: 1px solid #909DAD;
+}
+
+.delete-button img {
+  cursor: pointer;
+  height: 3vh;
+  position: absolute;
+  right: calc(20vw - 55px);
+  margin-top: calc(10vh - 55px);
+}
+
+.delete-button img:hover {
+  transform: scale(1.15);
+}
+
+.delete-button img:active {
+  transform: scale(0.9);
+}

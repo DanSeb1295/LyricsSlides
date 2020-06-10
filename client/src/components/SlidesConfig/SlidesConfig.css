@@ -1,5 +1,38 @@
-.slides-config-container {
+.song-list {
   width: 60vw;
-  padding: 30px max(3vw, 3vh); 
+}
+
+.slides-config-container,
+.song-list-container {
+  width: 100%;
+  padding: 30px 0 0; 
   font-size: max(2.5vw, 2.5vh);
+}
+
+.slides-config-container {
+  padding-bottom: 10px;
+}
+
+.song-list-container {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.add-button {
+  color: white;
+  background-color: #65768E;
+  display: inline-flex;
+  align-self: center;
+  width: 25px;
+  height: 25px;
+  line-height: 20px;
+  font-size: 25px;
+  justify-content: center;
+  border-radius: 50%;
+  cursor: pointer;
+  margin-bottom: 100px;
+}
+
+.add-button:hover {
+  background-color: #909DAD;
 }
