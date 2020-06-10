@@ -37,7 +37,7 @@ class BackgroundPanel extends Component {
 
         <div className="background-color-container row" >
           <div className="background-color column">
-            <div className="bg-color-bar" onClick={this.toggleColorPicker} />
+            <div className="bg-color-bar" onClick={this.toggleColorPicker} style={{backgroundColor: backgroundColor}} />
             Set Background Color
           </div>
         </div>
