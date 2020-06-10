@@ -10,7 +10,9 @@ class AppMain extends Component {
     italics: false,
     underline: false,
     fontFamily: 'Calibri',
+    lastFontFamily: 'Calibri',
     fontSize: 18,
+    lastFontSize: 18,
     fontColour: '#FFF',
     textAlignment: 'center',
     backgroundImage: null,
@@ -19,6 +21,12 @@ class AppMain extends Component {
     imageUploadModal: false,
     infoModal: false
   }
+
+  handleTextChange = event => {
+    this.setState({
+      [event.target.name]: event.target.value,
+    });
+  };
 
   toggleImageUploadModal = () => {
     this.setState( prevState => {
@@ -66,7 +74,9 @@ class AppMain extends Component {
       italics,
       underline,
       fontFamily,
+      lastFontFamily,
       fontSize,
+      lastFontSize,
       fontColour,
       textAlignment,
       backgroundImage,
@@ -78,12 +88,15 @@ class AppMain extends Component {
       italics,
       underline,
       fontFamily,
+      lastFontFamily,
       fontSize,
+      lastFontSize,
       fontColour,
       textAlignment,
       backgroundImage,
       backgroundColour,
       openModal: imageUploadModal,
+      handleTextChange: this.handleTextChange,
       toggleBold: this.toggleBold,
       toggleItalics: this.toggleItalics,
       toggleUnderline: this.toggleUnderline,

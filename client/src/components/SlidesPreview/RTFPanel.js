@@ -9,7 +9,7 @@ import alignRight from '../../assets/align_right.png';
 
 class RTFPanel extends Component {
   render() {
-    const { bold, italics, underline, fontFamily, fontSize, fontColour, textAlignment, toggleBold, toggleItalics, toggleUnderline, changeAlignment } = this.props;
+    const { bold, italics, underline, fontFamily, lastFontFamily, fontSize, lastFontSize, fontColour, textAlignment, toggleBold, toggleItalics, toggleUnderline, changeAlignment, handleTextChange } = this.props;
 
     return (
       <Fragment>
@@ -25,9 +25,55 @@ class RTFPanel extends Component {
           <img src={underlineIcon} alt="Underline Text"/>
         </div>
 
-        <input className="font-selector" value={fontFamily} />
+        <input
+          className="font-selector"
+          value={fontFamily}
+          onChange={handleTextChange}
+          onBlur={() => {
+            if (!fontFamily) {
+              handleTextChange({
+                target: {
+                  name: 'fontFamily',
+                  value: lastFontFamily
+                }
+              });
+            } else {
+              handleTextChange({
+                target: {
+                  name: 'lastFontFamily',
+                  value: fontFamily
+                }
+              })
+            }
+          }
+          }
+          name="fontFamily" />
 
-        <input className="size-selector" value={fontSize} />
+        <input 
+          className="size-selector"
+          value={fontSize}
+          onChange={handleTextChange}
+          onBlur={() => {
+            if (!fontSize) {
+              handleTextChange({
+                target: {
+                  name: 'fontSize',
+                  value: lastFontSize
+                }
+              });
+            } else {
+              handleTextChange({
+                target: {
+                  name: 'lastFontSize',
+                  value: fontSize
+                }
+              })
+            }
+          }
+          }
+          name="fontSize"
+          type="number"
+        />
 
         <div className="text-colour icon">
           <div>A</div>

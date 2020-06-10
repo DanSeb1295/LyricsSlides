@@ -27,8 +27,8 @@ class SlidesPreview extends Component {
         
         <div className="slide-preview row">
           <div className="slide-preview-container" style={previewStyle}>
-            <p>This is how your slides are going to look like</p>
-            <p>Adjust slide aesthetics here</p>
+            <p>This is how your slides are going to look</p>
+            <p>Adjust and format slides with this editor</p>
             <p>Add, edit and rearrange songs below</p>
           </div>
         </div>
