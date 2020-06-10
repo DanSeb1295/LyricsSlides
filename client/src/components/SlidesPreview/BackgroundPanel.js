@@ -1,10 +1,28 @@
 import React, { Component, Fragment } from 'react';
 import './BackgroundPanel.css';
 import image from '../../assets/image.png';
+import { ChromePicker } from 'react-color';
 
 class BackgroundPanel extends Component {
+  state = {
+    BGColorPickerOpen: false
+  }
+
+  toggleColorPicker = () => {
+    this.setState( prevState => { 
+      return {
+        BGColorPickerOpen: !prevState.BGColorPickerOpen
+      }
+    })
+  }
+
+  closeColorPicker = () => {
+    this.setState({ BGColorPickerOpen: false })
+  }
+
   render () {
-    const { toggleModal } = this.props;
+    const { toggleModal, backgroundColor, handleBGColorChange } = this.props;
+    const { BGColorPickerOpen } = this.state;
     
     return (
       <Fragment>
@@ -17,13 +35,22 @@ class BackgroundPanel extends Component {
           </div>
         </div>
 
-        <div className="background-colour-container row">
-          <div className="background-colour column">
-            <div className="rgb">RGB</div>
-            <input type="text" placeholder="20, 20, 20"/>
-            Set Background Colour
+        <div className="background-color-container row" >
+          <div className="background-color column">
+            <div className="bg-color-bar" onClick={this.toggleColorPicker} />
+            Set Background Color
           </div>
         </div>
+        { BGColorPickerOpen &&
+          <div className="bg-color-picker-container">
+            <div className="cover" onClick={this.closeColorPicker} />
+            <ChromePicker
+                disableAlpha={true} 
+                color={backgroundColor}
+                onChange={handleBGColorChange}
+              />
+          </div>
+        }
       </Fragment>
     )
   }

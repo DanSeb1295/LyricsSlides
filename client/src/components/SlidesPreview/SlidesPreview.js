@@ -6,15 +6,31 @@ import { ImageUploadModal } from '../modals';
 
 class SlidesPreview extends Component {
   render () {
-    const { openModal, fileHandler, toggleModal, textAlignment, bold, italics, underline, backgroundImage } = this.props
+    const { 
+      openModal, 
+      fileHandler, 
+      toggleModal, 
+      textAlignment, 
+      bold, 
+      italics, 
+      underline, 
+      backgroundImage,
+      fontSize,
+      fontColor,
+      backgroundColor,
+      handleBGColorChange
+    } = this.props
 
     const previewStyle = {
       textAlign: textAlignment,
       fontStyle: italics ? 'italic' : '',
       textDecoration: underline ? 'underline' : '',
       fontWeight: bold ? 'bold' : '',
+      color: fontColor ? fontColor : '',
       backgroundImage: backgroundImage ? `url(${backgroundImage})` : '',
-      backgroundSize: backgroundImage ? '100% 100%' : ''
+      backgroundSize: backgroundImage ? '100% 100%' : '',
+      backgroundColor: backgroundColor ? backgroundColor : '',
+      fontSize: `${fontSize / 10}vw`
     }
 
     return (
@@ -35,7 +51,7 @@ class SlidesPreview extends Component {
         
         <div className="background row">
           <div className="background-container">
-            <BackgroundPanel toggleModal={toggleModal} />
+            <BackgroundPanel toggleModal={toggleModal} backgroundColor={backgroundColor} handleBGColorChange={handleBGColorChange} />
           </div>
         </div>
 

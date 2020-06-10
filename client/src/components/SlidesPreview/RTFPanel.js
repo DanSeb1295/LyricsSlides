@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import './RTFPanel.css';
+import { ChromePicker } from 'react-color';
 import boldIcon from '../../assets/bold.png';
 import italicsIcon from '../../assets/italics.png';
 import underlineIcon from '../../assets/underline.png';
@@ -8,8 +9,42 @@ import alignCentre from '../../assets/align_centre.png';
 import alignRight from '../../assets/align_right.png';
 
 class RTFPanel extends Component {
+  state = {
+    fontColorPickerOpen: false
+  }
+
+  toggleColorPicker = () => {
+    this.setState( prevState => { 
+      return {
+        fontColorPickerOpen: !prevState.fontColorPickerOpen
+      }
+    })
+  }
+
+  closeColorPicker = () => {
+    this.setState({ fontColorPickerOpen: false })
+  }
+
   render() {
-    const { bold, italics, underline, fontFamily, lastFontFamily, fontSize, lastFontSize, fontColour, textAlignment, toggleBold, toggleItalics, toggleUnderline, changeAlignment, handleTextChange } = this.props;
+    const { 
+      bold,
+      italics, 
+      underline, 
+      fontFamily, 
+      lastFontFamily, 
+      fontSize, 
+      lastFontSize, 
+      fontColor,
+      textAlignment, 
+      toggleBold,
+      toggleItalics, 
+      toggleUnderline, 
+      changeAlignment, 
+      handleTextChange, 
+      handleFontColorChange
+    } = this.props;
+
+    const { fontColorPickerOpen } = this.state;
 
     return (
       <Fragment>
@@ -75,10 +110,20 @@ class RTFPanel extends Component {
           type="number"
         />
 
-        <div className="text-colour icon">
-          <div>A</div>
-          <div className="colour-bar">A</div>
+        <div className="text-color icon" onClick={this.toggleColorPicker}>
+          <div >A</div>
+          <div className="color-bar" style={{backgroundColor: fontColor}} />
         </div>
+        { fontColorPickerOpen &&
+          <div className="font-color-picker-container">
+            <div className="cover" onClick={this.closeColorPicker} />
+            <ChromePicker
+                disableAlpha={true} 
+                color={fontColor}
+                onChange={handleFontColorChange}
+              />
+          </div>
+        }
 
         <div className={`align-left icon ${textAlignment === 'left' ? 'selected' : ''}`} onClick={() => {changeAlignment('left')}} >
           <img src={alignLeft} alt="Left Align Text"/>

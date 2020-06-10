@@ -3,7 +3,7 @@ img {
   margin: 5px 15px;
 }
 
-.text-colour {
+.text-color {
   display: flex;
   flex-flow: column wrap;
   min-width: 50px;
@@ -29,7 +29,7 @@ img {
   width: 30px;
 }
 
-.colour-bar {
+.color-bar {
   font-size: 0;
   height: 4px;
   width: 20px;
@@ -42,4 +42,24 @@ img {
 
 .selected {
   background-color: #E1E1E1;
+}
+
+.font-color-picker-container {
+  position: absolute;
+  z-index: 2;
+  left: calc(50% - 225px / 2);
+  top: calc(19vh - 5px);
+}
+
+.font-color-picker-container .cover {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.font-color-picker-container input {
+  border: 1px solid #65768E !important;
+  box-shadow: none !important;
 }
