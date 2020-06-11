@@ -32,7 +32,6 @@ class RTFPanel extends Component {
       italics, 
       underline, 
       fontFamily, 
-      lastFontFamily, 
       fontSize, 
       lastFontSize, 
       fontColor,

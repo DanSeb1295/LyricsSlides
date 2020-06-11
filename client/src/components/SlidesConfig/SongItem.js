@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Spinner } from 'reactstrap';
 import './SongItem.css';
 import deleteIcon from '../../assets/delete.png'
 import successIcon from '../../assets/success.png';
