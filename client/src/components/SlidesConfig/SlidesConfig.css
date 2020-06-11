@@ -18,7 +18,8 @@
   padding-bottom: 0;
 }
 
-.add-button {
+.add-button,
+.export-button {
   color: white;
   background-color: #65768E;
   display: inline-flex;
@@ -30,9 +31,23 @@
   justify-content: center;
   border-radius: 50%;
   cursor: pointer;
-  margin-bottom: 100px;
+  margin-bottom: 50px;
 }
 
 .add-button:hover {
   background-color: #909DAD;
+}
+
+.export-button {
+  border-radius: 50px;
+  width: auto;
+  padding: 3px 40px;
+  font-size: 15px;
+  line-height: 25px;
+  background-color: #469BFD;
+  margin-bottom: 25px;
+}
+
+.export-button:hover {
+  background-color: #469BFDC0;
 }

@@ -4,6 +4,7 @@ import SlidesPreview from './SlidesPreview';
 import SlidesConfig from './SlidesConfig';
 import Footer from './Footer';
 import { SongSchema } from '../config/config';
+import generateSlides from '../util/SlideGenerator';
 
 let songID = 0;
 
@@ -16,10 +17,10 @@ class AppMain extends Component {
     lastFontFamily: 'Calibri',
     fontSize: 18,
     lastFontSize: 18,
-    fontColor: '#FFF',
+    fontColor: '#FFFFFF',
     textAlignment: 'center',
     backgroundImage: null,
-    backgroundColor: '#000',
+    backgroundColor: '#000000',
     imageUploadModal: false,
     infoModal: false,
     songList: [ {...SongSchema, key: songID, id: ++songID} ]
@@ -50,10 +51,14 @@ class AppMain extends Component {
   }
 
   handleFile = imageFiles => {
-    this.setState({ 
-      backgroundImage: URL.createObjectURL(imageFiles[0]),
-      backgroundColor: ''
-    })
+    const reader = new FileReader();
+    reader.readAsDataURL(imageFiles[0]);
+    reader.onloadend = () => {
+      this.setState({ 
+        backgroundImage: reader.result,
+        backgroundColor: ''
+      })  
+    }
   }
 
   changeAlignment = textAlignment => {
@@ -115,6 +120,12 @@ class AppMain extends Component {
     })
   }
 
+  exportSlides = () => {
+    const payload = {...this.state};
+    let file = generateSlides(payload);
+    file.writeFile("presentation.pptx");
+  }
+
   render () {
     const {
       imageUploadModal,
@@ -170,6 +181,9 @@ class AppMain extends Component {
         <AppHeader />
         <SlidesPreview {...SlidesPreviewProps} />
         <SlidesConfig {...SlidesConfigProps} />
+        <div className="export-button row" onClick={this.exportSlides}>
+          Export
+        </div>
         <Footer />
       </div>
     )

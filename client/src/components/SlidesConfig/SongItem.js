@@ -1,8 +1,17 @@
 import React, { Component } from 'react';
+import { Spinner } from 'reactstrap';
 import './SongItem.css';
 import deleteIcon from '../../assets/delete.png'
+import successIcon from '../../assets/success.png';
+import viewIcon from '../../assets/view.png';
+import songSearch from '../../util/SongSearch';
+import Loader from 'react-loader-spinner'
 
 class SongItem extends Component {  
+  state = {
+    viewLyrics: false
+  }
+
   searchMode = () => {
     const { updateSong, songItem } = this.props;
     let newSongItem = {...songItem};
@@ -17,7 +26,48 @@ class SongItem extends Component {
     updateSong(newSongItem);
   }
 
+  onTextChange = event => {
+    const { updateSong, songItem } = this.props;
+    let newSongItem = {...songItem};
+    newSongItem[event.target.name] = event.target.value;
+    newSongItem.status = null;
+    updateSong(newSongItem);
+  }
+
+  onDone = async () => {
+    const { updateSong, songItem } = this.props;
+    const { artist, title } = songItem;
+    if (!artist || !title) { return };
+    
+    let newSongItem = {...songItem};
+    newSongItem.status = 'searching'
+    updateSong(newSongItem);
+
+    let lyrics = await songSearch(artist, title)
+      .then(res => res)
+      .catch(err => '');
+    
+    newSongItem.content = lyrics;
+
+    if (lyrics) {
+      newSongItem.status = 'success'
+    } else {
+      newSongItem.status = 'failed'
+    };
+
+    updateSong(newSongItem);
+  }
+
+  onViewLyrics = () => {
+    this.setState({ viewLyrics: true })
+  }
+
+  onCloseLyrics = () => {
+    this.setState({ viewLyrics: false })
+  }
+
   render () {
+    const { viewLyrics } = this.state;
     const { songItem, deleteSong } = this.props;
     const {
       mode,
@@ -45,7 +95,32 @@ class SongItem extends Component {
             </div>
           </div>
           <div className="status-panel row">
-            <div className="done-button">Done</div>
+            { mode === 'search' && status === null &&
+              <div className="done-button" onClick={this.onDone}>Done</div>
+            }
+            {
+              mode === 'search' && status === 'searching' &&
+              <Loader type="TailSpin" height={20} width={20} color={'#909DAD'} />
+            }
+            {
+              mode === 'search' && status === 'success' &&
+              <div>
+                <div className="view-icon-container" onMouseOver={this.onViewLyrics}>
+                  <img src={viewIcon} alt="View Icon" className="view-icon"/>
+                  {
+                    viewLyrics === true &&
+                    <div className="lyrics-preview-container" onMouseOut={this.onCloseLyrics}>
+                      {content}
+                    </div>
+                  }
+                </div>
+                <img className="success-icon" src={successIcon} alt="Success Icon"/>
+              </div>
+            }
+            {
+              mode === 'search' && status === 'failed' &&
+              <div className="failed-icon">!</div>
+            }
           </div>
         </div>
         <div className="delete-button" onClick={() => deleteSong(id)}>
@@ -55,18 +130,39 @@ class SongItem extends Component {
         { mode === 'search' &&
           <div className="song-inputs row">
             <div className="artist-column">
-              <input type="text" className="artist-input" placeholder="Enter Name of Artist" />
+              <input 
+                type="text" 
+                className="artist-input" 
+                name="artist" 
+                value={artist} 
+                placeholder="Enter Name of Artist"
+                onChange={this.onTextChange}
+                />
               <div className="artist-subtitle">Artist</div>
             </div>
             <div className="song-title-column">
-              <input type="text" className="song-title-input" placeholder="Enter Song Title" />
+              <input 
+                type="text" 
+                className="song-title-input" 
+                name="title" 
+                value={title}  
+                placeholder="Enter Song Title"
+                onChange={this.onTextChange}
+              />
               <div className="song-title-subtitle">Song Title</div>
             </div>
           </div>
         }
 
         { mode === 'custom' &&
-          <textarea type="text" className="custom-text-input" placeholder="Enter Custom Text" />
+          <textarea
+            type="text" 
+            className="custom-text-input"
+            name="content"
+            placeholder="Enter Custom Text"
+            value={content}
+            onChange={this.onTextChange}
+          />
         }
 
       </div>

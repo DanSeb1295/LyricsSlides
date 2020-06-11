@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import './RTFPanel.css';
 import { ChromePicker } from 'react-color';
+import { FontFaces } from '../../config/config';
 import boldIcon from '../../assets/bold.png';
 import italicsIcon from '../../assets/italics.png';
 import underlineIcon from '../../assets/underline.png';
@@ -60,29 +61,22 @@ class RTFPanel extends Component {
           <img src={underlineIcon} alt="Underline Text"/>
         </div>
 
-        <input
+        <select
           className="font-selector"
           value={fontFamily}
           onChange={handleTextChange}
-          onBlur={() => {
-            if (!fontFamily) {
-              handleTextChange({
-                target: {
-                  name: 'fontFamily',
-                  value: lastFontFamily
-                }
-              });
-            } else {
-              handleTextChange({
-                target: {
-                  name: 'lastFontFamily',
-                  value: fontFamily
-                }
-              })
-            }
+          name="fontFamily"
+          >
+          {
+            FontFaces.map(fontFamilyOption => {
+              return(
+                <option value={fontFamilyOption} style={{ fontFamily: fontFamilyOption }} selected={ fontFamily===fontFamilyOption }>
+                  {fontFamilyOption}
+                </option>
+              )
+            })
           }
-          }
-          name="fontFamily" />
+        </select>
 
         <input 
           className="size-selector"

@@ -16,12 +16,14 @@ class SlidesPreview extends Component {
       underline, 
       backgroundImage,
       fontSize,
+      fontFamily,
       fontColor,
       backgroundColor,
       handleBGColorChange
     } = this.props
 
     const previewStyle = {
+      fontFamily,
       textAlign: textAlignment,
       fontStyle: italics ? 'italic' : '',
       textDecoration: underline ? 'underline' : '',
@@ -30,7 +32,7 @@ class SlidesPreview extends Component {
       backgroundImage: backgroundImage ? `url(${backgroundImage})` : '',
       backgroundSize: backgroundImage ? '100% 100%' : '',
       backgroundColor: backgroundColor ? backgroundColor : '',
-      fontSize: `${fontSize / 10}vw`
+      fontSize: `${fontSize / 14}vw`
     }
 
     return (
