@@ -45,6 +45,10 @@ class SongItem extends Component {
     let lyrics = await songSearch(artist, title)
       .then(res => res)
       .catch(err => '');
+
+    lyrics = await songSearch(artist, title)
+      .then(res => res)
+      .catch(err => '');
     
     newSongItem.content = lyrics;
 

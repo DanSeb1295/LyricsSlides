@@ -36,7 +36,7 @@ const generateSlides = payload => {
   for (let i = 0; i < songList.length; i++) {
     let curItem = songList[i].content;
     if (!curItem) { continue };
-    
+
     let formattedContent = formatContent(curItem, maxLines);
     for (let j = 0; j < formattedContent.length; j++) {
       let newSlide = pptx.addSlide({ masterName: "MASTER_SLIDE"});
