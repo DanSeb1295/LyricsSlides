@@ -69,7 +69,7 @@ class RTFPanel extends Component {
           {
             FontFaces.map(fontFamilyOption => {
               return(
-                <option value={fontFamilyOption} style={{ fontFamily: fontFamilyOption }} selected={ fontFamily===fontFamilyOption }>
+                <option key={fontFamilyOption} value={fontFamilyOption} style={{ fontFamily: fontFamilyOption }}>
                   {fontFamilyOption}
                 </option>
               )

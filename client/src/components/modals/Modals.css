@@ -1,7 +1,7 @@
 .modal-bg {
   background-color: rgba(0, 0, 0, .5);
-  height: 100vh;
-  width: 100vw;
+  height: 100%;
+  width: 100%;
   display: flex;
   justify-content: center;
   position: fixed;
@@ -11,13 +11,14 @@
 }
 
 .modal-container {
-  margin: 10% auto;
-  padding: 1%;
+  margin: 25vh 5% auto;
+  padding: 2% 8% 5%;
   border-radius: 10px;
   background-color: #FFF;
-  height: 75vh;
-  width: 50vw;
-  min-width: 500px;
+  height: auto;
+  width: auto;
+  overflow: auto;
+  text-align: justify;
   box-sizing: border-box;
 }
 
@@ -61,4 +62,8 @@
   color: white;
   background-color: #909DAD;
   border: 1px solid #909DAD;
+}
+
+.accept-button {
+  margin: 25px auto 10px;
 }
