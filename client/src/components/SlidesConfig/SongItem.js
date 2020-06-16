@@ -4,7 +4,7 @@ import deleteIcon from '../../assets/delete.png'
 import successIcon from '../../assets/success.png';
 import viewIcon from '../../assets/view.png';
 import songSearch from '../../util/SongSearch';
-import Loader from 'react-loader-spinner'
+import Loader from 'react-loader-spinner';
 
 class SongItem extends Component {  
   state = {
@@ -49,7 +49,7 @@ class SongItem extends Component {
     lyrics = await songSearch(artist, title)
       .then(res => res)
       .catch(err => '');
-    
+
     newSongItem.content = lyrics;
 
     if (lyrics) {
