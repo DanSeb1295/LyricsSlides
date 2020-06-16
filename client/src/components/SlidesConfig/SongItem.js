@@ -46,9 +46,11 @@ class SongItem extends Component {
       .then(res => res)
       .catch(err => '');
 
-    lyrics = await songSearch(artist, title)
-      .then(res => res)
-      .catch(err => '');
+    setTimeout(async () => {
+      lyrics = await songSearch(artist, title)
+        .then(res => res)
+        .catch(err => '');
+      }, 2000);
 
     newSongItem.content = lyrics;
 
@@ -113,6 +115,7 @@ class SongItem extends Component {
                   {
                     viewLyrics === true &&
                     <div className="lyrics-preview-container" onMouseOut={this.onCloseLyrics}>
+                      <h3>{title.toUpperCase()}</h3>
                       {content}
                     </div>
                   }

@@ -157,13 +157,14 @@ img.success-icon {
   z-index: 5;
   height: 50vh;
   width: auto;
-  border: 1px solid #65768E;
   border-radius: 5px;
   top: 20vh;
   right: 20vw;
-  background-color: white;
-  box-shadow: 0 0 2px 2px rgba(50, 50, 50, .1);
+  background-color: #909DAD;
+  color: white;
+  box-shadow: 0 0 4px 4px rgba(50, 50, 50, .1);
   padding: 1.5vw;
+  padding-top: .5vw;
   white-space: pre-line;
   font-size: max(1vw, 1.2vh);
   overflow-y: auto;
