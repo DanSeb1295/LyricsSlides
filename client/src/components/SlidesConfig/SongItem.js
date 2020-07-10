@@ -24,6 +24,7 @@ class SongItem extends Component {
     let newSongItem = {...songItem};
     newSongItem.mode = 'custom';
     updateSong(newSongItem);
+    this.setState({ viewLyrics: false })
   }
 
   onTextChange = event => {
