@@ -76,11 +76,25 @@ const formatContent = (content, maxLines) => {
   let formattedContent = content.split('\n\n');
   for (let i = 0; i < formattedContent.length; i++) {
     let curSlide = formattedContent[i];
-    if (curSlide.split('\n').length > maxLines) {
+    let numLines = curSlide.split('\n').length
+    if (numLines > maxLines) {
+      let splitAt = Math.floor(numLines / 2)
+      while (splitAt > maxLines) {
+        splitAt = Math.floor(splitAt / 2)
+      }
+
       let splitLines = curSlide.split('\n');
-      let sub1 = splitLines.slice(0, maxLines).join('\n');
-      let sub2 = splitLines.slice(maxLines, splitLines.length).join('\n');
-      formattedContent.splice(i, 1, sub1, sub2);
+      let subArrays = []
+      for (let j = 0, k = splitAt; j < numLines; j += splitAt, k += splitAt) {
+          if ((numLines - j) < maxLines) {
+            subArrays.push(splitLines.slice(j, numLines).join('\n'))
+            break
+          } else {
+            subArrays.push(splitLines.slice(j, k).join('\n'))
+          }
+      }
+
+      formattedContent.splice(i, 1, ...subArrays);
     }
   }
 
