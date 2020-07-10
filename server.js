@@ -46,7 +46,7 @@ const searchMetro = (req, res) => {
   return new Promise((resolve, reject) => {
     const { body: { artist, title }} = req;
     const url = `https://www.metrolyrics.com/${title.trim().replace('(', '').replace(')', '').split(' ').join('-')}-lyrics-${artist.trim().replace('(', '').replace(')', '').split(' ').join('-')}.html`;
-
+    console.log(url)
     request(
       url,
       (err, resp, body) => {
@@ -82,7 +82,7 @@ const searchAZ = (req, res) => {
   return new Promise((resolve, reject) => {
     const { body: { artist, title }} = req;
     const url = `https://www.azlyrics.com/lyrics/${artist.trim().replace('(', '').replace(')', '').split(' ').join('')}/${title.trim().replace('(', '').replace(')', '').split(' ').join('')}.html`
-    
+    console.log(url)
     request(
       url,
       (err, resp, body) => {
