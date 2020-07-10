@@ -18,12 +18,17 @@ const songSearch = async (artist, title) => {
 
   // 4. Check Lyrics.ovh
   const endpoint = `${HOST}/${artist.trim()}/${title.trim()}`
-  console.log(endpoint);
 
   return new Promise((resolve, reject) => {
     axios.get(endpoint)
-        .then(res => { resolve(res.data.lyrics) })
-        .catch(err => { reject() })
+        .then(res => { 
+          axios.post('/api/search', { artist, title, result: 'success' })
+            .then(apiRes => { resolve(res.data.lyrics) })
+        })
+        .catch(err => { 
+          axios.post('/api/search', { artist, title, result: 'failed' })
+            .then(apiRes => { reject() })
+        })
   })
 }
 
