@@ -15,13 +15,13 @@ const songSearch = async (artist, title) => {
   // 2. Check MetroLyrics
   return await axios
     .post('/api/searchMetro', { artist, title })
-    .then(res => { return res.data })
+    .then(async res => res.data )
     .catch(err => {
       
       // 3. Check AZLyrics
       return axios
         .post('/api/searchAZ', { artist, title })
-        .then(res => { return res.data })
+        .then(async res => res.data)
         .catch(err => {
           
           // 4. Check Lyrics.ovh
@@ -36,11 +36,9 @@ const searchAPI = (artist, title) => {
   return new Promise((resolve, reject) => {
     axios.get(endpoint)
         .then(res => { 
-          axios.post('/api/songs', { artist, title, result: 'success' })
           resolve(res.data.lyrics)
         })
         .catch(err => { 
-          axios.post('/api/songs', { artist, title, result: 'failed' })
           reject()
         })
   })

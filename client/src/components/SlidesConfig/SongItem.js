@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 import './SongItem.css';
 import deleteIcon from '../../assets/delete.png'
 import successIcon from '../../assets/success.png';
@@ -43,8 +44,13 @@ class SongItem extends Component {
     updateSong(newSongItem);
 
     let lyrics = await songSearch(artist, title)
-      .then(res => res)
-      .catch(err => '');
+      .then(res => {
+        axios.post('/api/songs', { artist, title, result: 'success' })
+        return res
+      })
+      .catch(err => {
+        axios.post('/api/songs', { artist, title, result: 'failed' })
+      });
 
     newSongItem.content = lyrics;
 
