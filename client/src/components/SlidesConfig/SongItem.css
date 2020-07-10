@@ -165,9 +165,26 @@ img.success-icon {
   box-shadow: 0 0 4px 4px rgba(50, 50, 50, .1);
   padding: 1.5vw;
   padding-top: .5vw;
+  padding-bottom: 0;
   white-space: pre-line;
   font-size: max(1vw, 1.2vh);
   overflow-y: auto;
   font-family: 'Helvetica Neue', sans-serif;
 }
 
+.click-to-edit {
+  width: 40%;
+  margin-left: auto;
+  margin-right: auto;
+  height: 15px;
+  background-color: rgba(255, 255, 255, 0.8);
+  position: sticky;
+  bottom: 0;
+  text-align: center;
+  font-family: 'Helvetica Neue', sans-serif;
+  border-radius: 5px 5px 0 0;
+  color: #909DAD;
+  padding: 5px 0;
+  margin-top: 5px;
+  box-shadow: 0 0 4px 4px rgba(50, 50, 50, .1);
+}

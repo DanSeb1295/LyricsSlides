@@ -76,7 +76,7 @@ class SongItem extends Component {
   }
 
   render () {
-    const { viewLyrics } = this.state;
+    const { viewLyrics, hovering } = this.state;
     const { songItem, deleteSong } = this.props;
     const {
       mode,
@@ -118,9 +118,12 @@ class SongItem extends Component {
                   <img src={viewIcon} alt="View Icon" className="view-icon"/>
                   {
                     viewLyrics === true &&
-                    <div className="lyrics-preview-container" onMouseOut={this.onCloseLyrics}>
+                    <div className="lyrics-preview-container" onMouseOut={this.onCloseLyrics} onClick={this.customMode} >
                       <h3>{title.toUpperCase()}</h3>
                       {content}
+                      <div className="click-to-edit">
+                        Click Text To Edit
+                      </div>
                     </div>
                   }
                 </div>
