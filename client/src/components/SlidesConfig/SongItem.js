@@ -46,12 +46,6 @@ class SongItem extends Component {
       .then(res => res)
       .catch(err => '');
 
-    setTimeout(async () => {
-      lyrics = await songSearch(artist, title)
-        .then(res => res)
-        .catch(err => '');
-      }, 2000);
-
     newSongItem.content = lyrics;
 
     if (lyrics) {
