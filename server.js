@@ -8,33 +8,33 @@ app.use(express.json({limit: '50mb', extended: true})); // support json encoded 
 app.use(express.urlencoded({limit: '50mb', extended: true}));
 
 /* -------------------- Connect MongoDB -------------------- */
-// const mongoPW = process.env.MONGO_PW
-// const mongoUser = process.env.MONGO_USER
-// const url = `mongodb+srv://${mongoUser}:${mongoPW}@lyricsslides.xlmpb.mongodb.net/LyricsSlides?retryWrites=true&w=majority`
+const mongoPW = process.env.MONGO_PW
+const mongoUser = process.env.MONGO_USER
+const url = `mongodb+srv://${mongoUser}:${mongoPW}@lyricsslides.xlmpb.mongodb.net/LyricsSlides?retryWrites=true&w=majority`
 
-// /* -------------------- APIs -------------------- */
-// app.post('/api/songs', async (req, res) => {
-//   MongoClient
-//   .connect(url, (err, db) => {
-//     if (err) throw err;
-//     console.log("MongoDB Connected...")
+/* -------------------- APIs -------------------- */
+app.post('/api/songs', async (req, res) => {
+  MongoClient
+  .connect(url, (err, db) => {
+    if (err) throw err;
+    console.log("MongoDB Connected...")
 
-//     const { body: { artist, title, result }} = req;
-//     const dbo = db.db('LyricsSlides');
-//     dbo.collection("SearchedSongs")
-//       .insertOne({ artist, title, result }, (err, dbRes) => {
-//         if (err) {
-//           console.log(err);
-//           return
-//         };
+    const { body: { artist, title, result }} = req;
+    const dbo = db.db('LyricsSlides');
+    dbo.collection("SearchedSongs")
+      .insertOne({ artist, title, result }, (err, dbRes) => {
+        if (err) {
+          console.log(err);
+          return
+        };
 
-//         const { insertedId } = dbRes;
-//         res.send({ insertedId });
-//       });
+        const { insertedId } = dbRes;
+        res.send({ insertedId });
+      });
 
-//     db.close();
-//   })
-// })
+    db.close();
+  })
+})
 
 app.post('/api/searchMetro', async (req, res) => {
   const lyrics = await searchMetro(req, res)
