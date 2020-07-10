@@ -15,13 +15,13 @@ const songSearch = async (artist, title) => {
   // 2. Check MetroLyrics
   return await axios
     .post('/api/searchMetro', { artist, title })
-    .then(async res => res.data )
+    .then(res => res.data )
     .catch(err => {
       
       // 3. Check AZLyrics
       return axios
         .post('/api/searchAZ', { artist, title })
-        .then(async res => res.data)
+        .then(res => res.data)
         .catch(err => {
           
           // 4. Check Lyrics.ovh

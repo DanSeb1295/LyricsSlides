@@ -45,11 +45,15 @@ class SongItem extends Component {
 
     let lyrics = await songSearch(artist, title)
       .then(res => {
-        axios.post('/api/songs', { artist, title, result: 'success' })
+        axios
+          .post('/api/songs', { artist, title, result: 'success' })
+          .catch(err => '')
         return res
       })
       .catch(err => {
-        axios.post('/api/songs', { artist, title, result: 'failed' })
+        axios
+          .post('/api/songs', { artist, title, result: 'failed' })
+          .catch(err => '')
       });
 
     newSongItem.content = lyrics;
