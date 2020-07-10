@@ -56,7 +56,7 @@ class SongItem extends Component {
           .catch(err => '')
       });
 
-    newSongItem.content = lyrics;
+    newSongItem.content = lyrics ? lyrics.trim() : lyrics;
 
     if (lyrics) {
       newSongItem.status = 'success'
