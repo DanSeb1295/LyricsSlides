@@ -46,6 +46,7 @@ const searchMetro = (req, res) => {
   return new Promise((resolve, reject) => {
     const { body: { artist, title }} = req;
     const url = `https://www.metrolyrics.com/${title.trim().replace('(', '').replace(')', '').split(' ').join('-')}-lyrics-${artist.trim().replace('(', '').replace(')', '').split(' ').join('-')}.html`;
+
     request(
       url,
       (err, resp, body) => {
@@ -63,7 +64,44 @@ const searchMetro = (req, res) => {
               && !x.data.toLowerCase().includes('bridge'))
             .map(lineObj => lineObj.data);
           
-          paras.push(lines.join() + '\n')
+          paras.push(lines.join('') + '\n')
+        })
+
+        return resolve(paras.join(''))
+      })
+  })
+}
+
+app.post('/api/searchAZ', async (req, res) => {
+  const lyrics = await searchAZ(req, res)
+  if (!lyrics.length) res.status(400).send();
+  res.send(lyrics)
+})
+
+const searchAZ = (req, res) => {
+  return new Promise((resolve, reject) => {
+    const { body: { artist, title }} = req;
+    const url = `https://www.azlyrics.com/lyrics/${artist.trim().replace('(', '').replace(')', '').split(' ').join('')}/${title.trim().replace('(', '').replace(')', '').split(' ').join('')}.html`
+    
+    request(
+      url,
+      (err, resp, body) => {
+        if (err) throw err;
+        let paras = []
+
+        const $ = cheerio.load(body);
+        $('div.ringtone').next().next().next().next().each((i, para) => {
+          console.log(para)
+          // $(this).find('br').removeAttr('clear');
+          let lines = para.children
+            .slice(2, para.children.length)
+            .filter(x => x.data !== undefined
+              && !x.data.toLowerCase().includes('verse')
+              && !x.data.toLowerCase().includes('chorus')
+              && !x.data.toLowerCase().includes('bridge'))
+            .map(lineObj => lineObj.data);
+          
+          paras.push(lines.join(''))
         })
 
         return resolve(paras.join(''))

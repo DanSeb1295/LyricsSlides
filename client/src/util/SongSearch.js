@@ -14,19 +14,17 @@ const songSearch = async (artist, title) => {
 
   // 2. Check MetroLyrics
   return await axios
-    .post('/api/searchMetro', { artist, title })
+    .post('/api/searchAZ', { artist, title })
     .then(res => { return res.data })
     .catch(err => {
       return searchAPI(artist, title);
     })
 
-  // 3. Check AZLyrics
-
-  // 4. Check https://lyrics.fandom.com/wiki
+  // 3. Check AZLyrics ??
 }
 
 const searchAPI = (artist, title) => {
-  // 5. Check Lyrics.ovh
+  // 4. Check Lyrics.ovh
   const endpoint = `${HOST}/${artist.trim()}/${title.trim()}`
 
   return new Promise((resolve, reject) => {
