@@ -177,8 +177,7 @@ img.success-icon {
   font-family: 'Helvetica Neue', sans-serif;
   border-radius: 5px 5px 0 0;
   color: #909DAD;
-  padding-top: 5px;
-  padding-bottom: 6px;
+  padding: 5px 10px 6px;
   margin-top: 5px;
   box-shadow: 0 0 4px 4px rgba(50, 50, 50, .1);
   text-align: center;
