@@ -35,12 +35,8 @@ const searchAPI = (artist, title) => {
 
   return new Promise((resolve, reject) => {
     axios.get(endpoint)
-        .then(res => { 
-          resolve(res.data.lyrics)
-        })
-        .catch(err => { 
-          reject()
-        })
+        .then(res => { resolve(res.data.lyrics) })
+        .catch(err => { reject() })
   })
 }
 
