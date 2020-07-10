@@ -91,8 +91,6 @@ const searchAZ = (req, res) => {
 
         const $ = cheerio.load(body);
         $('div.ringtone').next().next().next().next().each((i, para) => {
-          console.log(para)
-          // $(this).find('br').removeAttr('clear');
           let lines = para.children
             .slice(2, para.children.length)
             .filter(x => x.data !== undefined
