@@ -8,7 +8,7 @@ class EntryModal extends Component {
 
     return (
       <div className="modal-bg">
-        <div className="modal-container">
+        <div className="entry-modal-container">
           <div className="modal-content-container">
             <h1>Data Notice</h1>
             <span>This website collects data about all songs searched on this platform.</span>

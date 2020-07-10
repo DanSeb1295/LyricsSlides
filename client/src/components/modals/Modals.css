@@ -10,16 +10,22 @@
   top: 0;
 }
 
-.modal-container {
+.modal-container,
+.entry-modal-container {
   margin: 15vh 5% auto;
   padding: 20px;
-  border-radius: 10px;
+  border-radius: 5px;
   background-color: #FFF;
   height: auto;
   width: auto;
   overflow: auto;
   text-align: justify;
   box-sizing: border-box;
+}
+
+.entry-modal-container {
+  margin-top: 25vh;
+  padding: 2% 3% 3%;
 }
 
 .modal-content-container {

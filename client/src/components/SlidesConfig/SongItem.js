@@ -75,8 +75,16 @@ class SongItem extends Component {
     this.setState({ viewLyrics: false })
   }
 
+  onErrorMessage = () => {
+    this.setState({ viewError: true })
+  }
+
+  closeErrorMessage = () => {
+    this.setState({ viewError: false }) 
+  }
+
   render () {
-    const { viewLyrics, hovering } = this.state;
+    const { viewLyrics, viewError } = this.state;
     const { songItem, deleteSong } = this.props;
     const {
       mode,
@@ -132,7 +140,17 @@ class SongItem extends Component {
             }
             {
               mode === 'search' && status === 'failed' &&
-              <div className="failed-icon">!</div>
+              <div className="error-container">
+                {
+                  viewError === true &&
+                  <span className="error-message">Please ensure Artist & Title are accurate
+                    <br /> (e.g. "Live" in the title, Bethel MUSIC).
+                  </span>
+                }
+                <div className="failed-icon" onMouseOver={this.onErrorMessage} onMouseOut={this.closeErrorMessage}>
+                  !
+                </div>
+              </div>
             }
           </div>
         </div>

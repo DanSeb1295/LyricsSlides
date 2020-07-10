@@ -9,7 +9,7 @@ class App extends Component {
   }
 
   componentDidMount = () => {
-    // setTimeout(() => this.setState({ entryModal: true }), 1000)
+    setTimeout(() => this.setState({ entryModal: true }), 1000)
   }
 
   onCloseModal = () => {
