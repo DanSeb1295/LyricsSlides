@@ -57,14 +57,13 @@ const searchMetro = (req, res) => {
         $('#lyrics-body-text p.verse ').each((i, para) => {
           $(this).find('br').removeAttr('clear');
           let lines = para.children
-            .slice(1, para.children.length)
             .filter(x => x.data !== undefined
               && !x.data.toLowerCase().includes('verse')
               && !x.data.toLowerCase().includes('chorus')
               && !x.data.toLowerCase().includes('bridge'))
             .map(lineObj => lineObj.data);
           
-          paras.push(lines.join('') + '\n')
+          paras.push(lines.join('').trim('\n') + '\n\n')
         })
 
         return resolve(paras.join(''))
@@ -99,7 +98,7 @@ const searchAZ = (req, res) => {
               && !x.data.toLowerCase().includes('bridge'))
             .map(lineObj => lineObj.data);
           
-          paras.push(lines.join(''))
+          paras.push(lines.join('').trim('\n') + '\n\n')
         })
 
         return resolve(paras.join(''))
