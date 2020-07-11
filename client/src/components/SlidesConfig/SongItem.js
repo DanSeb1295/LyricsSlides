@@ -143,9 +143,9 @@ class SongItem extends Component {
               mode === 'search' && status === 'failed' &&
               <div className="error-container">
                 {
-                  viewError === true &&
+                  viewError || true &&
                   <span className="error-message">Please ensure Artist & Title are accurate
-                    <br /> (e.g. "Live" in the title, Bethel MUSIC).
+                    <br /> (e.g. "Live" in the title, Bethel MUSIC, Elevation WORSHIP).
                   </span>
                 }
                 <div className="failed-icon" onMouseOver={this.onErrorMessage} onMouseOut={this.closeErrorMessage}>
